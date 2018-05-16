@@ -1,15 +1,13 @@
 
-//content variables
 var header = document.querySelector('.header');
 var clockButton = document.querySelector('#clock-button');
-var h3 = document.querySelector('h3.content');
-var p = document.querySelector('p.content');
-var about = document.querySelector('.content.about');
-var work = document.querySelector('.content.work');
+var about = document.querySelector('div.about');
+var work = document.querySelector('div.work');
 var workCarousel = document.querySelector('.work-carousel');
 var culture = document.querySelector('.content.culture');
 var cultureCarousel = document.querySelector('.culture-carousel');
 var careerCarousel = document.querySelector('.career-carousel');
+var career = document.querySelector('div.career');
 var contact = document.querySelector('div.contact');
 var content = document.querySelector('.content');
 var video = document.querySelector('.video');
@@ -17,8 +15,8 @@ var nl = document.querySelector('#nl');
 var se = document.querySelector('#se');
 var fi = document.querySelector('#fi');
 var address = document.querySelector('#sai-address');
+var showing = document.querySelectorAll('.showing');
 
-//gsap variables
 var position = 0;
 var snaps = [0, 45, 135, 180, 225, 315, 360];
 var adjusting = false;
@@ -57,126 +55,6 @@ function refreshWindow() {
 	$(window).resize();
 }
 
-// function showContent(){
-//     var index = parseInt(clockButton.getAttribute('data-deg'));
-//     if (index === 1) {
-//         clockButton.style.transform = "rotate(45deg)";
-//         window.setTimeout(refreshWindow, 50);
-//         contact.style.display = "none";
-//         workCarousel.style.display = "none";
-//         cultureCarousel.style.display = "none";
-//         careerCarousel.style.display = "none";
-//         h3.innerHTML = "About";
-//         h3.style.visibility = "visible";
-//         about.style.display = "block";
-//         about.style.visibility = "visible";
-//         about.style.width = "330px";
-//         about.style.margin = "0 auto";
-//         document.querySelector('#nl').style.display = "inline-block";
-//         document.querySelector('#se').style.display = "inline-block";
-//         document.querySelector('#fi').style.display = "inline-block";
-//     } else if (index === 2) {
-//         clockButton.style.transform = "rotate(135deg)";
-        
-//         // window.setTimeout(refreshWindow, 50);
-//         about.style.display = "none";
-//         about.style.visibility = "hidden";
-//         document.querySelector('#nl').style.display = "none";
-//         document.querySelector('#se').style.display = "none";
-//         document.querySelector('#fi').style.display = "none";
-//         document.querySelector('div.contact').style.display = "none";
-//         cultureCarousel.style.display = "none";
-//         careerCarousel.style.display = "none";
-//         workCarousel.style.display = "block";
-//         $('.slick-slider').slick('refresh');
-//         h3.innerHTML = "Work";
-//         work.style.display = "block";
-//         work.style.visibility = "visible";
-//         work.style.width = "100%";
-//         work.style.margin = " 0 auto";
-
-//         $('.work-carousel .main-carousel').slick({
-//         infinite: true,
-//         slidesToShow: 3,
-//         slidesToScroll: 1,
-//         swipeToSlide: true});
-
-//     } else if (index === 3) {
-//         clockButton.style.transform = "rotate(180deg)"; 
-//         // window.setTimeout(refreshWindow, 50);
-//         work.style.display = "none";
-//         work.style.visibility = "hidden";
-//         document.querySelector('div.contact').style.display = "none";
-//         document.querySelector('.work-carousel').style.display = "none";
-//         document.querySelector('.career-carousel').style.display = "none";
-//         document.querySelector('.culture-carousel').style.display = "block";
-//         $('.slick-slider').slick('refresh');
-//         h3.innerHTML = "Culture";
-//         culture.style.display = "block";
-//         culture.style.visibility = "visible";
-//         culture.style.width = "100%";
-//         culture.style.margin = " 0 auto";
-
-//         $('.culture-carousel .main-carousel').slick({
-//         infinite: true,
-//         slidesToShow: 3,
-//         slidesToScroll: 1,
-//         swipeToSlide: true,
-//         mobileFirst: true,
-//         });
-
-
-//     } else if (index === 4) {
-//         clockButton.style.transform = "rotate(225deg)";
-        
-//         // window.setTimeout(refreshWindow, 50);
-//         hideMedia()
-//         culture.style.display = "none";
-//         culture.style.visibility = "hidden";
-//         document.querySelector('div.contact').style.display = "none";
-//         document.querySelector('.work-carousel').style.display = "none";
-//         document.querySelector('.culture-carousel').style.display = "none";
-//         document.querySelector('.career-carousel').style.display = "block";
-//         $('.slick-slider').slick('refresh');
-//         h3.innerHTML = "Careers";
-
-//         $('.main-vertical-carousel').slick({
-//             infinite: false,
-//             vertical: true,
-//             slidesToShow: 5,
-//             slidesToScroll: 1,
-//             swipeToSlide: true,
-//             // arrows: true,
-//             verticalSwiping: true, 
-//             verticalScrolling: true,
-//             // centerMode: true 
-//             mobileFirst: true,
-//           });
-
-//     } else if (index === 5) {
-//         clockButton.style.transform = "rotate(315deg)";
-//         window.setTimeout(refreshWindow, 50);
-//         h3.innerHTML = "Contact";
-//         h3.style.visibility = "visible";
-//         // p.style.display = "none";
-//         document.querySelector('.career-carousel').style.display = "none";
-//         document.querySelector('div.contact').style.visibility = "visible";
-//         document.querySelector('div.contact').style.display = "block";
-        
-
-//         document.querySelector('#sai-address').style.visibility = "visible";
-//         document.querySelector('#sai-address').style.display = "block";
-//     } else {
-//         clockButton.style.transform = "rotate(360deg)";
-
-//         h3.style.visibility = "hidden";
-//         p.style.display = "none";
-//         document.querySelector('div.contact').style.display = "none";
-//         document.querySelector('div.contact').style.visibility = "hidden";
-//         document.querySelector('#sai-address').style.visibility = "hidden"; 
-//         document.querySelector('#sai-address').style.display = "none";
-//     }
-// }
 
 function detectTouchscreen() {
 	var result = false;
@@ -270,7 +148,8 @@ function onLiveSnap(value) {
             dragResistance: .01,
             // onDrag: onRotate,
             liveSnap: onLiveSnap,
-            onClick: function(e){ 
+            onClick: 
+                function(e){ 
                 adjusting = true;
                 this.update();
                 if (snaps[position] === 0 ){
@@ -325,159 +204,93 @@ function getClosestIndex(value, choices) {
 	return closest;
 }
 
+
 function onRotate(){
     if (window.screen.width > 1024){
         window.setTimeout(function(){
-        if (snaps[position] === 45){
-            work.style.display = "none";
-            // work.style.visibility = "hidden";
-            culture.style.display = "none";
-            // culture.style.visibility = "hidden";
-            contact.style.display = "none";
-            workCarousel.style.display = "none";
-            cultureCarousel.style.display = "none";
-            careerCarousel.style.display = "none";
-            h3.innerHTML = "About";
-            // h3.style.visibility = "visible";
-            about.style.display = "block";
-            // about.style.visibility = "visible";
-            about.style.width = "330px";
-            about.style.margin = " 0 auto";
-            nl.style.display = "inline-block";
-            se.style.display = "inline-block";
-            fi.style.display = "inline-block";
-            
-        } else if (snaps[position] === 135) {
-            hideMedia()
-            culture.style.display = "none";
-            // culture.style.visibility = "hidden";
-            about.style.display = "none";
-            // about.style.visibility = "hidden";
-            nl.style.display = "none";
-            se.style.display = "none";
-            fi.style.display = "none";
-            contact.style.display = "none";
-            cultureCarousel.style.display = "none";
-            careerCarousel.style.display = "none";
-            workCarousel.style.display = "block";
-            // refresh needed for slick display to read height & width of DOM
-            $('.slick-slider').slick('refresh');
-            h3.innerHTML = "Work";
-            work.style.display = "block";
-            // work.style.visibility = "visible";
-            work.style.width = "100%";
-            work.style.margin = " 0 auto";
+            // specifying each element as hidden as when dragged quickly cases can be skipped (need to find a neater solution)
+            switch(snaps[position]){
+                case 45:
+                    work.classList.add("hidden");
+                    culture.classList.add("hidden");
+                    career.classList.add("hidden");
+                    contact.classList.add("hidden");
 
-            $('.work-carousel .main-carousel').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            swipeToSlide: true});
+                    about.classList.remove("hidden");
+                    break;
+                case 135:
+                    about.classList.add("hidden");
+                    culture.classList.add("hidden");
+                    career.classList.add("hidden");
+                    contact.classList.add("hidden");
 
-        } else if (snaps[position] === 180) {
-            hideMedia()
-            work.style.display = "none";
-            // work.style.visibility = "hidden";
-            about.style.display = "none";
-            // about.style.visibility = "hidden";
-            nl.style.display = "none";
-            se.style.display = "none";
-            fi.style.display = "none";
-            contact.style.display = "none";
-            workCarousel.style.display = "none";
-            careerCarousel.style.display = "none";
-            cultureCarousel.style.display = "block";
-            $('.slick-slider').slick('refresh');
-            h3.innerHTML = "Culture";
-            culture.style.display = "block";
-            // culture.style.visibility = "visible";
-            culture.style.width = "100%";
-            culture.style.margin = " 0 auto";
 
-            $('.culture-carousel .main-carousel').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            swipeToSlide: true,
-            mobileFirst: true,
-            });
+                    work.classList.remove("hidden");
+                    // refresh needed for slick display to read height & width of DOM
+                    $('.slick-slider').slick('refresh');
+                    $('.work-carousel .main-carousel').slick({
+                        infinite: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        swipeToSlide: true});
+                    break;
+                case 180:
+                    about.classList.add("hidden");
+                    work.classList.add("hidden");
+                    career.classList.add("hidden");
+                    contact.classList.add("hidden");
 
-        } else if (snaps[position] === 225) {
-            hideMedia()
-            work.style.display = "none";
-            // work.style.visibility = "hidden";
-            culture.style.display = "none";
-            // culture.style.visibility = "hidden";
-            about.style.display = "none";
-            // about.style.visibility = "hidden";
-            nl.style.display = "none";
-            se.style.display = "none";
-            fi.style.display = "none";
-            contact.style.display = "none";
-            workCarousel.style.display = "none";
-            cultureCarousel.style.display = "none";
-            careerCarousel.style.display = "block";
-            $('.slick-slider').slick('refresh');
-            h3.innerHTML = "Careers";
 
-            $('.main-vertical-carousel').slick({
-                infinite: false,
-                vertical: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                swipeToSlide: true,
-                // arrows: true,
-                verticalSwiping: true, 
-                verticalScrolling: true,
-                // centerMode: true 
-                mobileFirst: true,
-              });
 
-        } else if (snaps[position] === 315) {
-            h3.innerHTML = "Contact";
-            // h3.style.visibility = "visible";
-            culture.style.display = "none";
-            // culture.style.visibility = "hidden";
-            about.style.display = "none";
-            // about.style.visibility = "hidden";
-            work.style.display = "none";
-            // work.style.visibility = "hidden";
-            workCarousel.style.display = "none";
-            cultureCarousel.style.display = "none";
-            nl.style.display = "none";
-            se.style.display = "none";
-            fi.style.display = "none";
-            // p.style.display = "none";
-            careerCarousel.style.display = "none";
-            // document.querySelector('div.contact').style.visibility = "visible";
-            contact.style.display = "block";
+                    culture.classList.remove("hidden");
 
-            document.querySelector('#sai-address').style.visibility = "visible";
-            document.querySelector('#sai-address').style.display = "block";
+                    $('.slick-slider').slick('refresh');
+                    $('.culture-carousel .main-carousel').slick({
+                        infinite: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        swipeToSlide: true,
+                        mobileFirst: true,
+                        });
+                    break;
+                case 225:
+                    about.classList.add("hidden");
+                    work.classList.add("hidden");
+                    culture.classList.add("hidden");
+                    contact.classList.add("hidden");
 
-        } else {
-            document.querySelector('#nl').style.display = "none";
-            document.querySelector('#se').style.display = "none";
-            fi.style.display = "none";
-            about.style.display = "none";
-            about.style.visibility = "hidden";
-            h3.style.visibility = "hidden";
-            p.style.display = "none";
-            culture.style.display = "none";
-            culture.style.visibility = "hidden";
-            document.querySelector('div.contact').style.display = "none";
-            document.querySelector('div.contact').style.visibility = "hidden";
-            document.querySelector('#sai-address').style.visibility = "hidden"; 
-            document.querySelector('#sai-address').style.display = "none";
-            document.querySelector('.career-carousel').style.display = "none";
-            document.querySelector('.work-carousel').style.display = "none";
-            document.querySelector('.culture-carousel').style.display = "none";
-            work.style.display = "none";
-            work.style.visibility = "hidden";
+                    career.classList.remove("hidden");
+                    
+                    $('.slick-slider').slick('refresh');
+                    $('.main-vertical-carousel').slick({
+                        infinite: false,
+                        vertical: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        swipeToSlide: true,
+                        verticalSwiping: true, 
+                        verticalScrolling: true, 
+                        mobileFirst: true,
+                      });
+                    break;
+                case 315:
+                    career.classList.add("hidden");
+                    about.classList.add("hidden");
+                    work.classList.add("hidden");
+                    culture.classList.add("hidden");
 
-         }
+                    contact.classList.remove("hidden");
+                    break;
+                default:
+                    contact.classList.add("hidden");
+                    about.classList.add("hidden");
+                    work.classList.add("hidden");
+                    culture.classList.add("hidden");
+                    career.classList.add("hidden");
+            }
+
         }, 100);
-        // console.log("snaps:" + snaps[position]);
+    // console.log("snaps:" + snaps[position]);
     }
 }
 
@@ -518,8 +331,6 @@ document.addEventListener(
             document.querySelector('.header').addEventListener('click', counterMobile);
         }
         
-
-
         document.querySelector('#video-button-1').addEventListener('click', function(){
           showMedia()  
           document.querySelector('.video').src = 'https://player.vimeo.com/video/222319927?autoplay=1&title=0&byline=0&portrait=0';
@@ -533,22 +344,6 @@ document.addEventListener(
           showMedia()  
           document.querySelector('.video').src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
-       
-
-        // --------------------- Media repeated below, waiting on extra video files to be updated -------------------------
-        // document.querySelector('#video-button-4').addEventListener('click', function(){
-        //   showMedia()  
-        //   document.querySelector('.video').src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
-        // });
-        // document.querySelector('#video-button-5').addEventListener('click', function(){
-        //   showMedia()  
-        //   document.querySelector('.video').src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
-        // });
-        // document.querySelector('#video-button-6').addEventListener('click', function(){
-        //   showMedia()  
-        //   document.querySelector('.video').src = 'https://player.vimeo.com/video/222319927?autoplay=1&title=0&byline=0&portrait=0';
-        // });
-        
 
     });
 

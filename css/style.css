@@ -27,6 +27,11 @@ body {
 
 }
 
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
 .easter-egg {
   visibility: hidden;
   position: fixed;
@@ -74,16 +79,18 @@ body {
 }
 
 .wrap {
-  max-height: 773px; }
+  max-height: 773px;
+  width: 100%;
+   }
 
-.content.about {
+/*.content.about {
   display: none; }
 
 .content.work {
   display: none; }
 
 .content.culture {
-  display: none; }
+  display: none; }*/
 
 .header {
   display: block;
@@ -190,12 +197,17 @@ a {
 
 div.content {
   height: 200px;
-  transition: 0.4s ease; }
+  transition: 0.4s ease; 
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -55%);
+}
 
 .contact {
   width: 244px;
   margin: 0 auto;
-  display: none;
+  /*display: none;*/
   height: 90px; }
 
 .sai-content {
@@ -239,7 +251,6 @@ p {
 .sai-flower {
   width: 54px;
   height: auto;
-  display: none;
   margin: 0 auto;
   position: relative;
   top: 40px;
@@ -249,17 +260,25 @@ p {
 .main-carousel {
   width: 250px;
   margin: 0 auto;
-  top: -86px; }
+  position: absolute !important;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -90%); }
 
 .main-vertical-carousel {
-  top: -147px; }
+    position: absolute !important;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -80%); 
+    width: 200px;}
   .main-vertical-carousel .slick-prev,
   .main-vertical-carousel .slick-next {
     transform: rotate(90deg);
     position: relative;
-    left: 49.6%;
+    left: 50%;
     height: 11.458px;
     top: -7px; 
+    margin: 0px 0 0 -2.5%;
   }
 .main-vertical-carousel .slick-list.draggable {
   height: 65px !important;
@@ -271,15 +290,15 @@ p {
   height: 17px; }
 
 .work-carousel {
-  display: none;
+  /*display: none;*/
   height: 0; }
 
 .culture-carousel {
-  display: none;
+/*  display: none;*/
   height: 0; }
 
 .career-carousel {
-  display: none;
+  /*display: none;*/
   height: 0; }
 
 .carousel-cell {
@@ -300,13 +319,20 @@ img.carousel-object {
   width: 54px;
   margin: 0 auto;
   cursor: url(../assets/180123_SAI_brand_design_website_PNGs/Desktop/180123_SAI_Website_Pointer-23.png), pointer; }
+.navigation {
+  position: absolute;
+  top: 67.1%;
+  left: 50%;
+  transform: translate(-50%);
+}
 
 #clock-button {
   width: 81.35px;
   display: block;
-  position: relative;
-  top: -18px;
-  margin: 0 auto; }
+  
+  
+  /*margin: 0px 0 0 -4.2%;*/
+  }
   #clock-button *:focus {
     outline: 0;
     outline: none; }
@@ -338,9 +364,9 @@ small {
   display: block;
   text-align: center;
   position: absolute;
-  top: 280%;
-  left: 0;
-  right: 0;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%);
   font-family: "Moderat-Regular";
   font-weight: 500;
   font-size: 14px;
