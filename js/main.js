@@ -3,7 +3,6 @@ var header = document.querySelector('.header');
 var clockButton = document.querySelector('#clock-button');
 var about = document.querySelector('div.about');
 var work = document.querySelector('div.work');
-var workCarousel = document.querySelector('.work-carousel');
 var culture = document.querySelector('.content.culture');
 var cultureCarousel = document.querySelector('.culture-carousel');
 var careerCarousel = document.querySelector('.career-carousel');
@@ -11,11 +10,6 @@ var career = document.querySelector('div.career');
 var contact = document.querySelector('div.contact');
 var content = document.querySelector('.content');
 var video = document.querySelector('.video');
-var nl = document.querySelector('#nl');
-var se = document.querySelector('#se');
-var fi = document.querySelector('#fi');
-var address = document.querySelector('#sai-address');
-var showing = document.querySelectorAll('.showing');
 
 var position = 0;
 var snaps = [0, 45, 135, 180, 225, 315, 360];
@@ -143,32 +137,22 @@ function onLiveSnap(value) {
 
 
 // if ((window.screen.width > 1024) && (detectTouchscreen() === false)){
-    var draggable = Draggable.create([clockButton], {
+    var draggable = Draggable.create(clockButton, {
             type: "rotation",
             dragResistance: .01,
-            // onDrag: onRotate,
+            dragClickables: true,
             liveSnap: onLiveSnap,
+            allowContextMenu:true,
             onClick: 
                 function(e){ 
                 adjusting = true;
                 this.update();
-                if (snaps[position] === 0 ){
-                    snaps[position] = 45;  
-                } else if (snaps[position] === 45){
-                    snaps[position] = 135;
-                    
-                } else if (snaps[position] === 135){
-                    snaps[position] = 180;
-                    
-                } else if (snaps[position] === 180){
-                    snaps[position] = 225;
-                    
-                } else if (snaps[position] === 225){
-                    snaps[position] = 315;
-                    
-                } else { 
-                    snaps[position] = 0;  
-                } 
+                if (snaps[position] < 360){
+                    snaps[position] = snaps[position ++];
+                } else {
+                    position = [1];
+                }
+                console.log(snaps[position]);
                 TweenLite.set(this.target, {
                     rotation: snaps[position]
                 });
