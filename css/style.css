@@ -81,9 +81,10 @@ body {
 
 }
 
-.wrap {
+div.wrap {
   max-height: 773px;
   width: 100%;
+  overflow: hidden;
    }
 
 
