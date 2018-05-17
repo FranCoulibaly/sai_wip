@@ -542,9 +542,7 @@ small {
     .main-vertical-carousel .slick-next {
       margin-top: 15px;
       left: 48.9%; }
-     .main-vertical-carousel span.carousel-cell.slick-slide {
-      width: 300px;
-      }
+
   iframe {
     scrolling: yes; }
   small {
