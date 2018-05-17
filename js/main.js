@@ -10,7 +10,12 @@ var career = document.querySelector('div.career');
 var contact = document.querySelector('div.contact');
 var content = document.querySelector('.content');
 var video = document.querySelector('.video');
-
+var easterEggHunt = document.querySelector('.easter-egg-hunt');
+var easterEgg = document.querySelector('.easter-egg');
+var hideBg = document.querySelector('.hide-background');
+var video = document.querySelector('.video');
+var download = document.querySelector('.download');
+var wrap = document.querySelector('.wrap');
 var position = 0;
 var snaps = [0, 45, 135, 180, 225, 315, 360];
 var adjusting = false;
@@ -68,64 +73,22 @@ function detectTouchscreen() {
 	return result;
 }
 
-function rotateClockButton(){
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var index = parseInt(clockButton.getAttribute('data-deg'));
-    if ((w < 768) || (w >= 768 && w <= 1024) || (detectTouchscreen() === true)) {
-        if (index < 5) {
-            clockButton.setAttribute('data-deg', index + 1);    
-        } 
-        else {
-            clockButton.setAttribute('data-deg', 0);
-        }
-        showContent();
-    }
-}
 
 function showMedia(){
-    window.setTimeout(function(){
         //desktop
-        if (window.screen.height >= 759 && window.screen.width > 1024){
-	        header.setAttribute('style', 'top:-240px;');
-	        content.setAttribute('style', 'position:relative;bottom:255px');
-	        cultureCarousel.setAttribute('style', 'display:block;position:relative;bottom:280px');
-	        clockButton.setAttribute('style', 'top:-325px;transform:rotate(180deg);');
+	        header.classList.add('media-display-header');
+            document.querySelector('.culture').classList.add('media-display-text');
+	        document.querySelector('.navigation').classList.add('media-display-nav');
 	        video.style.display = 'block';
-        } 
-        // tablet portrait
-        else if (window.screen.width >= 768 && window.screen.height <= 1024 && window.screen.orientation.type === "portrait-primary") {
-	        header.setAttribute('style', 'top:-275px;');
-	        content.setAttribute('style', 'position:relative;bottom:160px');
-	        cultureCarousel.setAttribute('style', 'display:block;position:relative;bottom:120px');
-	        clockButton.setAttribute('style', 'top:25px;transform:rotate(180deg);');
-	        video.setAttribute('style', 'display:block;top:-90px;');
-        }
-        //tablet landscape
-        else if (window.screen.height >= 768 && window.screen.height <= 768 && window.screen.orientation.type === "landscape-primary") {
-	        header.setAttribute('style', 'top:-240px;');
-	        content.setAttribute('style', 'position:relative;bottom:230px');
-	        cultureCarousel.setAttribute('style', 'display:block;position:relative;bottom:250px');
-	        clockButton.setAttribute('style', 'top:-285px;transform:rotate(180deg);');
-	        video.setAttribute('style', 'display:block;top:-70px;');
-        }
-        // mobile
-        else {
-	        header.setAttribute('style', 'top:-200px;');
-	        content.setAttribute('style', 'position:relative;bottom:100px');
-	        cultureCarousel.setAttribute('style', 'display:block;position:relative;top:-90px');
-	        clockButton.setAttribute('style', 'top:40px;transform:rotate(180deg);');
-	        video.setAttribute('style', 'display:block;height:auto;bottom:-10px;'); 
-        }
-    }, 100)
 }
 
 function hideMedia(){
     video.src = "";
     video.style.display = 'none';
-    header.style.top = "";
-    content.setAttribute('style', 'position:"";bottom:"";')
-    cultureCarousel.setAttribute('style', 'position:"";bottom:"";')
-    clockButton.style.top = "";
+    header.classList.remove('media-display-header');
+    document.querySelector('.culture').classList.remove('media-display-text');
+    document.querySelector('.navigation').classList.remove('media-display-nav');
+    // clockButton.style.top = "";
 }
 
 function onLiveSnap(value) {
@@ -136,7 +99,7 @@ function onLiveSnap(value) {
 }
 
 
-// if ((window.screen.width > 1024) && (detectTouchscreen() === false)){
+
     var draggable = Draggable.create(clockButton, {
             type: "rotation",
             dragResistance: .01,
@@ -152,7 +115,7 @@ function onLiveSnap(value) {
                 } else {
                     position = [1];
                 }
-                console.log(snaps[position]);
+                // console.log(snaps[position]);
                 TweenLite.set(this.target, {
                     rotation: snaps[position]
                 });
@@ -170,7 +133,7 @@ function onLiveSnap(value) {
 
         }
     });
-// }
+
 
 function getClosestIndex(value, choices) {
 	var i = choices.length;
@@ -190,143 +153,143 @@ function getClosestIndex(value, choices) {
 
 
 function onRotate(){
-    if (window.screen.width > 1024){
-        window.setTimeout(function(){
-            // specifying each element as hidden as when dragged quickly cases can be skipped (need to find a neater solution)
-            switch(snaps[position]){
-                case 45:
-                    work.classList.add("hidden");
-                    culture.classList.add("hidden");
-                    career.classList.add("hidden");
-                    contact.classList.add("hidden");
+    window.setTimeout(function(){
+        // specifying each element as hidden because when navigation is dragged quickly cases can be skipped (need to find a neater solution)
+        switch(snaps[position]){
+            case 45:
+                work.classList.add("hidden");
+                culture.classList.add("hidden");
+                career.classList.add("hidden");
+                contact.classList.add("hidden");
 
-                    about.classList.remove("hidden");
-                    break;
-                case 135:
-                    about.classList.add("hidden");
-                    culture.classList.add("hidden");
-                    career.classList.add("hidden");
-                    contact.classList.add("hidden");
-
-
-                    work.classList.remove("hidden");
-                    // refresh needed for slick display to read height & width of DOM
-                    $('.slick-slider').slick('refresh');
-                    $('.work-carousel .main-carousel').slick({
-                        infinite: true,
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        swipeToSlide: true});
-                    break;
-                case 180:
-                    about.classList.add("hidden");
-                    work.classList.add("hidden");
-                    career.classList.add("hidden");
-                    contact.classList.add("hidden");
+                about.classList.remove("hidden");
+                break;
+            case 135:
+                hideMedia();
+                about.classList.add("hidden");
+                culture.classList.add("hidden");
+                career.classList.add("hidden");
+                contact.classList.add("hidden");
 
 
+                work.classList.remove("hidden");
+                // refresh needed for slick display to read height & width of DOM
+                $('.slick-slider').slick('refresh');
+                $('.work-carousel .main-carousel').slick({
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    swipeToSlide: true});
+                break;
+            case 180:
+                about.classList.add("hidden");
+                work.classList.add("hidden");
+                career.classList.add("hidden");
+                contact.classList.add("hidden");
 
-                    culture.classList.remove("hidden");
 
-                    $('.slick-slider').slick('refresh');
-                    $('.culture-carousel .main-carousel').slick({
-                        infinite: true,
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        swipeToSlide: true,
-                        mobileFirst: true,
-                        });
-                    break;
-                case 225:
-                    about.classList.add("hidden");
-                    work.classList.add("hidden");
-                    culture.classList.add("hidden");
-                    contact.classList.add("hidden");
 
-                    career.classList.remove("hidden");
-                    
-                    $('.slick-slider').slick('refresh');
-                    $('.main-vertical-carousel').slick({
-                        infinite: false,
-                        vertical: true,
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        swipeToSlide: true,
-                        verticalSwiping: true, 
-                        verticalScrolling: true, 
-                        mobileFirst: true,
-                      });
-                    break;
-                case 315:
-                    career.classList.add("hidden");
-                    about.classList.add("hidden");
-                    work.classList.add("hidden");
-                    culture.classList.add("hidden");
+                culture.classList.remove("hidden");
 
-                    contact.classList.remove("hidden");
-                    break;
-                default:
-                    contact.classList.add("hidden");
-                    about.classList.add("hidden");
-                    work.classList.add("hidden");
-                    culture.classList.add("hidden");
-                    career.classList.add("hidden");
-            }
+                $('.slick-slider').slick('refresh');
+                $('.culture-carousel .main-carousel').slick({
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    swipeToSlide: true,
+                    mobileFirst: true,
+                    });
+                break;
+            case 225:
+                hideMedia();
+                about.classList.add("hidden");
+                work.classList.add("hidden");
+                culture.classList.add("hidden");
+                contact.classList.add("hidden");
 
-        }, 100);
-    // console.log("snaps:" + snaps[position]);
-    }
+                career.classList.remove("hidden");
+                
+                $('.slick-slider').slick('refresh');
+                $('.main-vertical-carousel').slick({
+                    infinite: false,
+                    vertical: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    swipeToSlide: true,
+                    verticalSwiping: true, 
+                    verticalScrolling: true, 
+                    mobileFirst: true,
+                  });
+                break;
+            case 315:
+                career.classList.add("hidden");
+                about.classList.add("hidden");
+                work.classList.add("hidden");
+                culture.classList.add("hidden");
+
+                contact.classList.remove("hidden");
+                break;
+            default:
+                contact.classList.add("hidden");
+                about.classList.add("hidden");
+                work.classList.add("hidden");
+                culture.classList.add("hidden");
+                career.classList.add("hidden");
+        }
+
+    }, 100);
 }
 
 document.addEventListener(
     "DOMContentLoaded", function(){
         if (window.screen.width > 1024) {
             document.querySelector(".sai-text--mobile").style.display = "none";
-            document.querySelector('.header').addEventListener('click', counter);
-            document.querySelector('.easter-egg-hunt').addEventListener('mouseover', function(){
-            document.querySelector('.easter-egg').classList.add('visible');
-            document.querySelector('.hide').style.visibility = 'visible';
-            document.querySelector('.download').style.display = "block"; 
+            header.addEventListener('click', counter);
+            easterEggHunt.addEventListener('mouseover', function(){
+            easterEgg.classList.add('visible');
+            hideBg.style.visibility = 'visible';
+            download.style.display = "block"; 
             });
-            document.querySelector('.wrap').addEventListener('click', function(){
-            document.querySelector('.easter-egg').classList.remove('visible');
-            document.querySelector('.hide').style.visibility = 'hidden';
-            document.querySelector('.download').style.display = "none"; 
+            wrap.addEventListener('click', function(){
+            easterEgg.classList.remove('visible');
+            hideBg.style.visibility = 'hidden';
+            download.style.display = "none"; 
         });
 
         } else {
-            document.ontouchmove = function(e){ e.preventDefault(); }
+            document.ontouchmove = function(e){ e.preventDefault(); 
+            }
             document.body.addEventListener("touchmove", function(event) {
                 event.preventDefault();
             }, {passive: false});
-            document.querySelector('#clock-button').addEventListener('click', rotateClockButton);
-            document.querySelector('.easter-egg-hunt').addEventListener('click', function(){
-                document.querySelector('.easter-egg').classList.add('visible');
-                document.querySelector('.download').style.display = "block";
-                document.querySelector('.hide').style.visibility = 'visible';
+            
+            easterEggHunt.addEventListener('click', function(){
+                easterEgg.classList.add('visible');
+                download.style.display = "block";
+                hideBg.style.visibility = 'visible';
             });
             
-            document.querySelector('.easter-egg').addEventListener('click', function(){
-                document.querySelector('.easter-egg').classList.remove('visible');
-                document.querySelector('.download').style.display = "none"; 
-                document.querySelector('.hide').style.visibility = 'hidden';
+            easterEgg.addEventListener('click', function(){
+                easterEgg.classList.remove('visible');
+                download.style.display = "none"; 
+                hideBg.style.visibility = 'hidden';
             });
 
-            document.querySelector('.header').addEventListener('click', counterMobile);
+            header.addEventListener('click', counterMobile);
         }
         
         document.querySelector('#video-button-1').addEventListener('click', function(){
           showMedia()  
-          document.querySelector('.video').src = 'https://player.vimeo.com/video/222319927?autoplay=1&title=0&byline=0&portrait=0';
+          video.src = 'https://player.vimeo.com/video/222319927?autoplay=1&title=0&byline=0&portrait=0';
         });
 
         document.querySelector('#video-button-2').addEventListener('click', function(){
           showMedia()  
-          document.querySelector('.video').src = "https://player.vimeo.com/video/223576301?autoplay=1&title=0&byline=0&portrait=0";
+          video.src = "https://player.vimeo.com/video/223576301?autoplay=1&title=0&byline=0&portrait=0";
         });
         document.querySelector('#video-button-3').addEventListener('click', function(){
           showMedia()  
-          document.querySelector('.video').src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
+          video.src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
 
     });
