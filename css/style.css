@@ -434,6 +434,16 @@ small {
     left: 50%;
     transform: translate(-50%);
   }
+  .media-display-nav {
+    transform: translate(-50%, -100%) !important;
+  }
+  .media-display-header{
+    transform: translateY(-25px) !important;
+  }
+
+  .media-display-text {
+      transform: translate(-50%, -45%) !important;
+  }
   
   .hide-background {
     position:absolute;
@@ -450,7 +460,7 @@ small {
     max-width: 90%;
     height: auto;
     position: absolute;
-    top: 23.5%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
     overflow: hidden;
@@ -459,10 +469,12 @@ small {
     top: 65%;
     color: rgb(255,255,255);
     font-size: 21px;
+    width: 300px;
+    text-align: center;
   }
 
   #instagram {
-    top: 110px;
+    top: 85%;
   }
   div.content {
     top: 30%;
@@ -496,7 +508,7 @@ small {
     top: -105px;
     font-size: 17px; }
   .header {
-    top: -110px; }
+    top: -90%; }
   .carousel-cell {
     margin-left: 20px;
     margin-right: 20px; }
@@ -535,13 +547,16 @@ small {
   .main-vertical-carousel {
     left: 50%;
     top: 350%;
-    transform: translate(-50%, -350%); }
+    transform: translate(-50%, -350%); 
+    width: 300px;
+  }
     .main-vertical-carousel .slick-prev {
       margin-bottom: 15px;
-      left: 48.9%; }
+      left: 50%; }
     .main-vertical-carousel .slick-next {
       margin-top: 15px;
-      left: 48.9%; }
+      left: 50%; }
+
 
   iframe {
     scrolling: yes; }
@@ -572,7 +587,16 @@ small {
     left: 50%;
     transform: translate(-50%);
   }
-  
+  .media-display-nav {
+    transform: translate(-50%, -150%) !important;
+  }
+  .media-display-header{
+    transform: translateY(-25px) !important;
+  }
+
+  .media-display-text {
+      transform: translate(-50%, -65%) !important;
+  }
   .hide-background {
     position:absolute;
     padding:0;
@@ -597,7 +621,14 @@ small {
     color: rgb(222,219,215);
   }
   #instagram {
-    top: 110px;
+    top: 85%;
+  }
+  div.content {
+    top: 40%;
+    transform: translate(-50%, -40%);
+  }
+  .video {
+    top: 50%;
   }
 }
 

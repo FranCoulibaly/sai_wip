@@ -264,15 +264,32 @@ document.addEventListener(
             }, {passive: false});
             
             easterEggHunt.addEventListener('click', function(){
-                easterEgg.classList.add('visible');
-                download.style.display = "block";
-                hideBg.style.visibility = 'visible';
+                var text = document.querySelectorAll('.content');
+                var length = text.length;
+                for (var index = 0; index < length; index++) {
+                    text[index].style.transition = "opacity 0.02s linear 0s";
+                    text[index].style.opacity = 0;
+                    easterEgg.classList.add('visible');
+                    download.style.display = "block";
+                }
+                
+                
+                // hideBg.style.visibility = 'visible';
+
             });
             
             easterEgg.addEventListener('click', function(){
-                easterEgg.classList.remove('visible');
-                download.style.display = "none"; 
-                hideBg.style.visibility = 'hidden';
+                var text = document.querySelectorAll('.content');
+                var length = text.length;
+                for (var index = 0; index < length; index++) {
+                    text[index].style.transition = "opacity 0.02s linear 0s";
+                    text[index].style.opacity = 1;
+                    easterEgg.classList.remove('visible');
+                    download.style.display = "none";
+                }
+                
+                // hideBg.style.visibility = 'hidden';
+                
             });
 
             header.addEventListener('click', counterMobile);
@@ -291,6 +308,12 @@ document.addEventListener(
           showMedia()  
           video.src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
+
+        clockButton.addEventListener('touchmove', function(e) {
+
+        e.preventDefault();
+
+        }, false);
 
     });
 
