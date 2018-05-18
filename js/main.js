@@ -257,8 +257,7 @@ document.addEventListener(
         });
 
         } else {
-            document.ontouchmove = function(e){ e.preventDefault(); 
-            }
+            
             document.body.addEventListener("touchmove", function(event) {
                 event.preventDefault();
             }, {passive: false});
@@ -309,11 +308,7 @@ document.addEventListener(
           video.src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
 
-        clockButton.addEventListener('touchmove', function(e) {
 
-        e.preventDefault();
-
-        }, false);
 
     });
 

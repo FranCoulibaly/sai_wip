@@ -481,24 +481,23 @@ small {
     top: 30%;
     transform: translate(-50%, -30%);
   }
-  .content.work {
+  .content {
     line-height: 22px;
-    font-size: 17px;
+    font-size: 16px;
+  }
+  .content.work {
+    
     width: 280px !important; }
     .content.work br {
       content: ' '; }
   .content.culture {
-    line-height: 22px;
-    font-size: 17px;
     width: 300px !important; }
     .content.culture br {
       content: ' '; }
   .content.about {
-    line-height: 22px;
-    font-size: 17px;
     width: 90%; }
   #clock-button {
-    width: 111px;
+    width: 75px;
      }
   #sai-address {
     font-size: 17px; }
@@ -558,11 +557,6 @@ small {
       margin-top: 15px;
       left: 50%; }
 
-
-  iframe {
-    scrolling: yes; }
-  small {
-    top: 200%; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (max-device-height: 1024px) and (orientation: portrait) {
   #clock-button {
