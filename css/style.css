@@ -471,7 +471,7 @@ small {
     overflow: hidden;
   }
   .download {
-    top: 65%;
+   /* top: 65%;*/
     color: rgb(255,255,255);
     font-size: 21px;
     width: 300px;
@@ -499,7 +499,7 @@ small {
     .content.culture br {
       content: ' '; }
   .content.about {
-    width: 90%; }
+    width: 100%; }
   #clock-button {
     width: 75px;
      }
@@ -550,7 +550,7 @@ small {
     font-size: 17px; }
   .main-vertical-carousel {
     left: 50%;
-    top: 350%;
+    top: 345%;
     transform: translate(-50%, -350%); 
     width: 300px;
   }
