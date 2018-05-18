@@ -269,7 +269,9 @@ document.addEventListener(
                     text[index].style.transition = "opacity 0.02s linear 0s";
                     text[index].style.opacity = 0;
                     easterEgg.classList.add('visible');
+                    document.querySelector('.easter-egg-wrapper').classList.add('visible');
                     download.style.display = "block";
+                    hideMedia()
                 }
                 
                 
@@ -283,6 +285,7 @@ document.addEventListener(
                 for (var index = 0; index < length; index++) {
                     text[index].style.transition = "opacity 0.02s linear 0s";
                     text[index].style.opacity = 1;
+                    document.querySelector('.easter-egg-wrapper').classList.remove('visible');
                     easterEgg.classList.remove('visible');
                     download.style.display = "none";
                 }
