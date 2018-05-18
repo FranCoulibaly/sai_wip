@@ -338,9 +338,7 @@ img.carousel-object {
 #clock-button {
   width: 62px;
   display: block;
-  
-  
-  /*margin: 0px 0 0 -4.2%;*/
+
   }
   #clock-button *:focus {
     outline: 0;
