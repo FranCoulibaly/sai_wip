@@ -98,11 +98,8 @@ li {
   list-style: none;
 }
 #submit {
-	text-align: center;
-  position: relative;
-	font-family: "Moderat-Bold";
-    padding: 6px 120px;
-    width: 100px;
+    position: relative;
+    font-family: "Moderat-Bold";
     height: 35px;
     font-size: 14px;
     background-color: transparent;
@@ -112,6 +109,7 @@ li {
     border: none;
     left: 65%;
     top: 80px;
+    padding: 0;
 }
 
 /*#submit:hover {
@@ -205,6 +203,7 @@ h3#redirect {
 	#submit {
     height: 45px;
     font-size: 12px;
+    padding-bottom: 100px;
     /*margin-top: 5%;*/
 	}
 	#back {

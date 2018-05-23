@@ -19,6 +19,7 @@ var wrap = document.querySelector('.wrap');
 var position = 0;
 var snaps = [0, 45, 135, 180, 225, 315, 360];
 var adjusting = false;
+var recVideo = document.querySelector('#rec-video');
 
 function counter() {
     var index = parseInt(header.getAttribute('data-lang'));
@@ -240,6 +241,16 @@ function onRotate(){
     }, 100);
 }
 
+function controlVideo(){
+    if (easterEgg.classList.contains("visible")){
+        recVideo.play();
+        console.log("play");
+    }
+    else {
+        recVideo.pause();
+    }
+}
+
 document.addEventListener(
     "DOMContentLoaded", function(){
         if (window.screen.width > 1024) {
@@ -248,12 +259,14 @@ document.addEventListener(
             easterEggHunt.addEventListener('mouseover', function(){
             easterEgg.classList.add('visible');
             hideBg.style.visibility = 'visible';
-            download.style.display = "block"; 
+            // download.style.display = "block"; 
+            controlVideo();
             });
             wrap.addEventListener('click', function(){
             easterEgg.classList.remove('visible');
             hideBg.style.visibility = 'hidden';
-            download.style.display = "none"; 
+            // download.style.display = "none"; 
+            controlVideo();
         });
 
         } else {
@@ -271,7 +284,8 @@ document.addEventListener(
                     easterEgg.classList.add('visible');
                     document.querySelector('.easter-egg-wrapper').classList.add('visible');
                     download.style.display = "block";
-                    hideMedia()
+                    hideMedia();
+                    controlVideo();
                 }
                 
                 
@@ -288,6 +302,7 @@ document.addEventListener(
                     document.querySelector('.easter-egg-wrapper').classList.remove('visible');
                     easterEgg.classList.remove('visible');
                     download.style.display = "none";
+                    controlVideo();
                 }
                 
                 // hideBg.style.visibility = 'hidden';

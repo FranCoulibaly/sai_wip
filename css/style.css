@@ -481,6 +481,10 @@ small {
     width: 200px;
     text-align: center;
   }
+  video.easter-egg {
+    height: 90%;
+    width: auto;
+  }
 
   #instagram {
     top: 85%;
