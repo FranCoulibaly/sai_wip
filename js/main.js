@@ -243,11 +243,13 @@ function onRotate(){
 
 function controlVideo(){
     if (easterEgg.classList.contains("visible")){
+        
         recVideo.play();
         console.log("play");
     }
     else {
         recVideo.pause();
+        // recVideo.load();
     }
 }
 
@@ -285,25 +287,18 @@ document.addEventListener(
 
         } else {
             
-            document.body.addEventListener("touchmove", function(event) {
-                event.preventDefault();
-            }, {passive: false});
-            
             easterEggHunt.addEventListener('click', function(){
                 var text = document.querySelectorAll('.content');
                 var length = text.length;
                 for (var index = 0; index < length; index++) {
                     text[index].style.transition = "opacity 0.02s linear 0s";
                     text[index].style.opacity = 0;
-                    easterEgg.classList.add('visible');
-                    document.querySelector('.easter-egg-wrapper').classList.add('visible');
-                    hideMedia();
-                    controlVideo();
                 }
-                
-                
-                // hideBg.style.visibility = 'visible';
-
+                easterEgg.classList.add('visible');
+                document.querySelector('.easter-egg-wrapper').classList.add('visible');
+                hideMedia();
+                controlVideo();
+                console.log("clicked");
             });
             
             easterEgg.addEventListener('click', function(){
@@ -312,14 +307,14 @@ document.addEventListener(
                 for (var index = 0; index < length; index++) {
                     text[index].style.transition = "opacity 0.02s linear 0s";
                     text[index].style.opacity = 1;
-                    document.querySelector('.easter-egg-wrapper').classList.remove('visible');
-                    easterEgg.classList.remove('visible');
-                    controlVideo();
                 }
-                
-                // hideBg.style.visibility = 'hidden';
-                
+                document.querySelector('.easter-egg-wrapper').classList.remove('visible');
+                easterEgg.classList.remove('visible');
+                controlVideo();
             });
+            document.body.addEventListener("touchmove", function(event) {
+                event.preventDefault();
+            }, {passive: false});
 
             header.addEventListener('click', counterMobile);
         }
