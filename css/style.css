@@ -36,10 +36,10 @@ body {
   display: none;
   visibility: hidden;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 100%;
+  max-height: 50%;
   opacity: 0;
   transition: opacity 0.2s linear;
 }
@@ -85,7 +85,7 @@ body {
 }
 
 div.wrap {
-  max-height: 773px;
+  height: 100%;
   width: 100%;
   overflow: hidden;
    }
@@ -482,7 +482,7 @@ small {
     text-align: center;
   }
   video.easter-egg {
-    height: 90%;
+    height: 50%;
     width: auto;
   }
 

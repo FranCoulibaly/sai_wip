@@ -256,15 +256,29 @@ document.addEventListener(
         if (window.screen.width > 1024) {
             document.querySelector(".sai-text--mobile").style.display = "none";
             header.addEventListener('click', counter);
+
             easterEggHunt.addEventListener('mouseover', function(){
-            easterEgg.classList.add('visible');
-            hideBg.style.visibility = 'visible';
-            // download.style.display = "block"; 
-            controlVideo();
+                var text = document.querySelectorAll('.content');
+                var length = text.length;
+                for (var index = 0; index < length; index++) {
+                    text[index].style.transition = "opacity 0.02s linear 0s";
+                    text[index].style.opacity = 0;
+                    easterEgg.classList.add('visible');
+                    document.querySelector('.easter-egg-wrapper').classList.add('visible');
+                    }
+                controlVideo();
             });
             wrap.addEventListener('click', function(){
-            easterEgg.classList.remove('visible');
-            hideBg.style.visibility = 'hidden';
+            var text = document.querySelectorAll('.content');
+                var length = text.length;
+                for (var index = 0; index < length; index++) {
+                    text[index].style.transition = "opacity 0.02s linear 0s";
+                    text[index].style.opacity = 1;
+                    document.querySelector('.easter-egg-wrapper').classList.remove('visible');
+                    easterEgg.classList.remove('visible');
+                }
+
+            // hideBg.style.visibility = 'hidden';
             // download.style.display = "none"; 
             controlVideo();
         });
@@ -283,7 +297,6 @@ document.addEventListener(
                     text[index].style.opacity = 0;
                     easterEgg.classList.add('visible');
                     document.querySelector('.easter-egg-wrapper').classList.add('visible');
-                    download.style.display = "block";
                     hideMedia();
                     controlVideo();
                 }
@@ -301,7 +314,6 @@ document.addEventListener(
                     text[index].style.opacity = 1;
                     document.querySelector('.easter-egg-wrapper').classList.remove('visible');
                     easterEgg.classList.remove('visible');
-                    download.style.display = "none";
                     controlVideo();
                 }
                 
