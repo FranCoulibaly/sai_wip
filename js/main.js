@@ -301,7 +301,7 @@ document.addEventListener(
                 console.log("clicked");
             });
             
-            easterEgg.addEventListener('click', function(){
+            document.querySelector('.easter-egg-wrapper').addEventListener('click', function(){
                 var text = document.querySelectorAll('.content');
                 var length = text.length;
                 for (var index = 0; index < length; index++) {
@@ -333,7 +333,18 @@ document.addEventListener(
           video.src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
 
-
+        recVideo.addEventListener('ended', function(){
+            var text = document.querySelectorAll('.content');
+            var length = text.length;
+            for (var index = 0; index < length; index++) {
+                text[index].style.transition = "opacity 0.02s linear 0s";
+                text[index].style.opacity = 1;
+            }
+            document.querySelector('.easter-egg-wrapper').classList.remove('visible');
+            easterEgg.classList.remove('visible');  
+            console.log("ended");
+            });
+       
 
     });
 
