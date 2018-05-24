@@ -425,6 +425,17 @@ small {
   }
 }
 
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait) { 
+  .video {
+    top: 38%;
+  }
+  .media-display-text {
+    transform: translate(-50%, -50%) !important;
+  }
+}
 @media only screen and (max-width: 768px) {
 
   body {
