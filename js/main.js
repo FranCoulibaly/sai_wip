@@ -241,11 +241,20 @@ function onRotate(){
     }, 100);
 }
 
+var playCount = 0;
+
 function controlVideo(){
     if (easterEgg.classList.contains("visible")){
         
-        recVideo.play();
-        console.log("play");
+        console.log(playCount);
+        if (playCount > 0){
+            recVideo.load();
+            recVideo.play();
+            playCount++;
+        } else {
+            recVideo.play();
+            playCount++;
+        }
     }
     else {
         recVideo.pause();
