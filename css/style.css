@@ -569,8 +569,18 @@ small {
     margin-top: 15px;
     left: 50%; }
   iframe {
-  scrolling: yes; }}
+  scrolling: yes; }
+}
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px){
+  div.content {
+    top: 28%;
+  }
+
+  .video {
+    top: 29%;
+  }
+}
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (max-device-height: 1024px) and (orientation: portrait) {
   #clock-button {
