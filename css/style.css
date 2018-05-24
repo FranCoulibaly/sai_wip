@@ -414,6 +414,17 @@ small {
 .sai-text--mobile[data-lang="5"] span:nth-child(6) {
   display: block; }
 
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px){
+  div.content {
+    top: 28%;
+  }
+
+  .video {
+    top: 29%;
+  }
+}
+
 @media only screen and (max-width: 768px) {
 
   body {
@@ -572,15 +583,7 @@ small {
   scrolling: yes; }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px){
-  div.content {
-    top: 28%;
-  }
 
-  .video {
-    top: 29%;
-  }
-}
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (max-device-height: 1024px) and (orientation: portrait) {
   #clock-button {
