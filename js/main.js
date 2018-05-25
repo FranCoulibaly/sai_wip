@@ -305,8 +305,8 @@ document.addEventListener(
                 easterEgg.classList.add('visible');
                 document.querySelector('.easter-egg-wrapper').classList.add('visible');
                 hideMedia();
-                controlVideo();
-                console.log("clicked");
+                // controlVideo();
+                // console.log("clicked");
             });
             
             document.querySelector('.easter-egg-wrapper').addEventListener('click', function(){
@@ -318,7 +318,7 @@ document.addEventListener(
                 }
                 document.querySelector('.easter-egg-wrapper').classList.remove('visible');
                 easterEgg.classList.remove('visible');
-                controlVideo();
+                recVideo.pause();
             });
             document.body.addEventListener("touchmove", function(event) {
                 event.preventDefault();
