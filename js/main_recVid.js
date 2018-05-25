@@ -19,7 +19,6 @@ var wrap = document.querySelector('.wrap');
 var position = 0;
 var snaps = [0, 45, 135, 180, 225, 315, 360];
 var adjusting = false;
-var recVideo = document.querySelector('#rec-video');
 
 function counter() {
     var index = parseInt(header.getAttribute('data-lang'));
@@ -241,59 +240,27 @@ function onRotate(){
     }, 100);
 }
 
-var playCount = 0;
-
-function controlVideo(){
-    if (easterEgg.classList.contains("visible")){
-        
-        if (playCount > 0){
-            recVideo.load();
-            recVideo.play();
-            playCount++;
-        } else {
-            recVideo.play();
-            playCount++;
-        }
-    }
-    else {
-        recVideo.pause();
-        // recVideo.load();
-    }
-}
-
 document.addEventListener(
     "DOMContentLoaded", function(){
         if (window.screen.width > 1024) {
             document.querySelector(".sai-text--mobile").style.display = "none";
             header.addEventListener('click', counter);
-
             easterEggHunt.addEventListener('mouseover', function(){
-                var text = document.querySelectorAll('.content');
-                var length = text.length;
-                for (var index = 0; index < length; index++) {
-                    text[index].style.transition = "opacity 0.02s linear 0s";
-                    text[index].style.opacity = 0;
-                    easterEgg.classList.add('visible');
-                    document.querySelector('.easter-egg-wrapper').classList.add('visible');
-                    }
-                controlVideo();
+            easterEgg.classList.add('visible');
+            hideBg.style.visibility = 'visible';
+            download.style.display = "block"; 
             });
             wrap.addEventListener('click', function(){
-            var text = document.querySelectorAll('.content');
-                var length = text.length;
-                for (var index = 0; index < length; index++) {
-                    text[index].style.transition = "opacity 0.02s linear 0s";
-                    text[index].style.opacity = 1;
-                    document.querySelector('.easter-egg-wrapper').classList.remove('visible');
-                    easterEgg.classList.remove('visible');
-                }
-
-            // hideBg.style.visibility = 'hidden';
-            // download.style.display = "none"; 
-            controlVideo();
+            easterEgg.classList.remove('visible');
+            hideBg.style.visibility = 'hidden';
+            download.style.display = "none"; 
         });
 
         } else {
+            
+            document.body.addEventListener("touchmove", function(event) {
+                event.preventDefault();
+            }, {passive: false});
             
             easterEggHunt.addEventListener('click', function(){
                 var text = document.querySelectorAll('.content');
@@ -301,28 +268,31 @@ document.addEventListener(
                 for (var index = 0; index < length; index++) {
                     text[index].style.transition = "opacity 0.02s linear 0s";
                     text[index].style.opacity = 0;
+                    easterEgg.classList.add('visible');
+                    document.querySelector('.easter-egg-wrapper').classList.add('visible');
+                    download.style.display = "block";
+                    hideMedia()
                 }
-                easterEgg.classList.add('visible');
-                document.querySelector('.easter-egg-wrapper').classList.add('visible');
-                hideMedia();
-                controlVideo();
-                console.log("clicked");
+                
+                
+                // hideBg.style.visibility = 'visible';
+
             });
             
-            document.querySelector('.easter-egg-wrapper').addEventListener('click', function(){
+            easterEgg.addEventListener('click', function(){
                 var text = document.querySelectorAll('.content');
                 var length = text.length;
                 for (var index = 0; index < length; index++) {
                     text[index].style.transition = "opacity 0.02s linear 0s";
                     text[index].style.opacity = 1;
+                    document.querySelector('.easter-egg-wrapper').classList.remove('visible');
+                    easterEgg.classList.remove('visible');
+                    download.style.display = "none";
                 }
-                document.querySelector('.easter-egg-wrapper').classList.remove('visible');
-                easterEgg.classList.remove('visible');
-                controlVideo();
+                
+                // hideBg.style.visibility = 'hidden';
+                
             });
-            document.body.addEventListener("touchmove", function(event) {
-                event.preventDefault();
-            }, {passive: false});
 
             header.addEventListener('click', counterMobile);
         }
@@ -341,17 +311,11 @@ document.addEventListener(
           video.src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
 
-        recVideo.addEventListener('ended', function(){
-            var text = document.querySelectorAll('.content');
-            var length = text.length;
-            for (var index = 0; index < length; index++) {
-                text[index].style.transition = "opacity 0.02s linear 0s";
-                text[index].style.opacity = 1;
-            }
-            document.querySelector('.easter-egg-wrapper').classList.remove('visible');
-            easterEgg.classList.remove('visible');  
-            console.log("ended");
-            });
-       
+
 
     });
+
+   
+
+
+
