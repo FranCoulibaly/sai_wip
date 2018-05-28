@@ -241,23 +241,50 @@ function onRotate(){
     }, 100);
 }
 
-var playCount = 0;
+// var playCount = 0;
+var iframe = document.querySelector('#rec-video');
+var player = new Vimeo.Player(iframe);
 
 function controlVideo(){
     if (easterEgg.classList.contains("visible")){
-        
-        if (playCount > 0){
-            recVideo.load();
-            recVideo.play();
-            playCount++;
-        } else {
-            recVideo.play();
-            playCount++;
-        }
+       player.play().then(function() {
+    // the video was played
+        }).catch(function(error) {
+            switch (error.name) {
+                case 'PasswordError':
+                    // the video is password-protected and the viewer needs to enter the
+                    // password first
+                    break;
+
+                case 'PrivacyError':
+                    // the video is private
+                    break;
+
+                default:
+                    // some other error occurred
+                    break;
+    }
+});
     }
     else {
-        recVideo.pause();
-        // recVideo.load();
+        player.pause().then(function() {
+    // the video was paused
+        }).catch(function(error) {
+            switch (error.name) {
+                case 'PasswordError':
+                    // the video is password-protected and the viewer needs to enter the
+                    // password first
+                    break;
+
+                case 'PrivacyError':
+                    // the video is private
+                    break;
+
+                default:
+                    // some other error occurred
+                    break;
+    }
+});
     }
 }
 
@@ -288,8 +315,6 @@ document.addEventListener(
                     easterEgg.classList.remove('visible');
                 }
 
-            // hideBg.style.visibility = 'hidden';
-            // download.style.display = "none"; 
             controlVideo();
         });
 
@@ -341,7 +366,8 @@ document.addEventListener(
           video.src = "https://player.vimeo.com/video/212268868?autoplay=1&title=0&byline=0&portrait=0";
         });
 
-        recVideo.addEventListener('ended', function(){
+        
+        player.on('ended', function(){
             var text = document.querySelectorAll('.content');
             var length = text.length;
             for (var index = 0; index < length; index++) {
@@ -350,8 +376,8 @@ document.addEventListener(
             }
             document.querySelector('.easter-egg-wrapper').classList.remove('visible');
             easterEgg.classList.remove('visible');  
-            console.log("ended");
-            });
-       
+            // console.log("ended");
+        });
+                   
 
     });
