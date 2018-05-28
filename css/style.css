@@ -417,11 +417,11 @@ small {
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px){
   div.content {
-    top: 28%;
+    top: 28% !important;
   }
 
   .video {
-    top: 29%;
+    top: 29% !important;
   }
 }
 
